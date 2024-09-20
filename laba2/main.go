@@ -85,3 +85,5 @@ func main() {
 	fmt.Scan(&num2)
 	fmt.Printf("Среднее значение: %.2f\n", average(num1, num2))
 }
+
+//dsfjghksdjfghklsdfghiolsdfg
