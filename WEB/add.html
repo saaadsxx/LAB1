@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить задачу</title>
+</head>
+<body>
+    <h1>Добавить задачу</h1>
+    <input type="text" id="taskInput" placeholder="Введите задачу">
+    <button onclick="addTask()">Добавить</button>
+    <br>
+    <a href="index.html">Вернуться к списку задач</a>
+
+    <script>
+        function addTask() {
+            const taskInput = document.getElementById("taskInput");
+            const taskName = taskInput.value;
+            if (taskName.trim() === "") return;
+
+            const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+            tasks.push({ name: taskName, done: false });
+            localStorage.setItem("tasks", JSON.stringify(tasks));
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>
