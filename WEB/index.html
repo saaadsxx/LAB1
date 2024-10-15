@@ -35,26 +35,26 @@
                 taskCell.textContent = task.name;
                 row.appendChild(taskCell);
 
-                const inProgressCell = document.createElement("td");
-                const inProgressCheckbox = document.createElement("input");
-                inProgressCheckbox.type = "checkbox";
+                const inProgressCell = document.createElement("td"); //создается новая ячейка
+                const inProgressCheckbox = document.createElement("input"); //cоздается элемент <input> типа checkbox
+                inProgressCheckbox.type = "checkbox"; //флажок
                 inProgressCheckbox.checked = task.inProgress;
-                inProgressCheckbox.onchange = () => toggleTaskInProgress(index);
-                inProgressCell.appendChild(inProgressCheckbox);
+                inProgressCheckbox.onchange = () => toggleTaskInProgress(index); // При изменении состояния флажка вызывается функция
+                inProgressCell.appendChild(inProgressCheckbox); //добавляет созданный флажок внутрь ячейки таблицы
                 row.appendChild(inProgressCell);
 
                 const doneCell = document.createElement("td");
                 const doneCheckbox = document.createElement("input");
                 doneCheckbox.type = "checkbox";
                 doneCheckbox.checked = task.done;
-                doneCheckbox.onchange = () => toggleTaskDone(index);
+                doneCheckbox.onchange = () => toggleTaskDone(index); // При изменении состояния флажка вызывается функция
                 doneCell.appendChild(doneCheckbox);
                 row.appendChild(doneCell);
 
                 const deleteCell = document.createElement("td");
                 const deleteButton = document.createElement("button");
                 deleteButton.textContent = "Удалить";
-                deleteButton.onclick = () => deleteTask(index);
+                deleteButton.onclick = () => deleteTask(index); // При клике вызывается функция
                 deleteCell.appendChild(deleteButton);
                 row.appendChild(deleteCell);
 
@@ -78,7 +78,7 @@
 
         function deleteTask(index) {
             const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-            tasks.splice(index, 1);
+            tasks.splice(index, 1); // удаляет задачу
             localStorage.setItem("tasks", JSON.stringify(tasks));
             loadTasks();
         }

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket Chat Client</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #messages {
+            border: 1px solid #ccc;
+            height: 300px;
+            overflow-y: scroll;
+            margin-bottom: 10px;
+        }
+        #input {
+            width: 100%;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>WebSocket Chat Client</h1>
+    <div id="messages"></div>
+    <input type="text" id="input" placeholder="Введите сообщение..." />
+    <script>
+        const socket = new WebSocket('ws://localhost:8082/ws');
+
+        socket.onopen = () => {
+            console.log('Подключено к серверу');
+        };
+
+        socket.onmessage = (event) => {
+            const messagesDiv = document.getElementById('messages');
+            messagesDiv.innerHTML += `<div>${event.data}</div>`;
+            messagesDiv.scrollTop = messagesDiv.scrollHeight; // Прокрутка вниз
+        };
+
+        document.getElementById('input').addEventListener('keypress', (event) => {
+            if (event.key === 'Enter') {
+                const message = event.target.value;
+                socket.send(message);
+                event.target.value = '';
+            }
+        });
+    </script>
+</body>
+</html>
