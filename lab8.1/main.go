@@ -2,6 +2,7 @@ package main
 
 import (
 	"net/http"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 	"gorm.io/driver/postgres"
@@ -11,8 +12,8 @@ import (
 // User представляет модель пользователя
 type User struct {
 	ID   uint   `json:"id" gorm:"primaryKey"`
-	Name string `json:"name"`
-	Age  int    `json:"age"`
+	Name string `json:"name" binding:"required"`
+	Age  int    `json:"age" binding:"required,gte=0,lte=130"` // Минимум 0, максимум 130
 }
 
 // Хранение ссылки на базу данных
@@ -54,11 +55,39 @@ func main() {
 	router.Run("localhost:8088")
 }
 
-// getUsers возвращает список пользователей
+// handleError централизованная обработка ошибок
+func handleError(c *gin.Context, err error, statusCode int) {
+	c.JSON(statusCode, gin.H{"error": err.Error()})
+}
+
+// getUsers возвращает список пользователей с пагинацией и фильтрацией
 func getUsers(c *gin.Context) {
 	var users []User
-	db.Find(&users)
-	c.IndentedJSON(http.StatusOK, users)
+	var count int64
+
+	// Параметры запроса
+	name := c.Query("name")
+	age := c.Query("age")
+	page, _ := strconv.Atoi(c.DefaultQuery("page", "1"))
+	limit, _ := strconv.Atoi(c.DefaultQuery("limit", "10"))
+
+	// Применяем фильтрацию
+	query := db.Model(&User{})
+	if name != "" {
+		query = query.Where("name ILIKE ?", "%"+name+"%")
+	}
+	if age != "" {
+		query = query.Where("age = ?", age)
+	}
+
+	// Подсчет общего числа пользователей
+	query.Count(&count)
+
+	// Пагинация
+	offset := (page - 1) * limit
+	query.Offset(offset).Limit(limit).Find(&users)
+
+	c.JSON(http.StatusOK, gin.H{"total": count, "users": users})
 }
 
 // getUserByID возвращает пользователя по ID
@@ -67,23 +96,24 @@ func getUserByID(c *gin.Context) {
 	var user User
 
 	if err := db.First(&user, id).Error; err != nil {
-		c.IndentedJSON(http.StatusNotFound, gin.H{"message": "user not found"})
+		handleError(c, err, http.StatusNotFound)
 		return
 	}
 
-	c.IndentedJSON(http.StatusOK, user)
+	c.JSON(http.StatusOK, user)
 }
 
 // addUser добавляет нового пользователя
 func addUser(c *gin.Context) {
 	var newUser User
 
-	if err := c.BindJSON(&newUser); err != nil {
+	if err := c.ShouldBindJSON(&newUser); err != nil {
+		handleError(c, err, http.StatusBadRequest)
 		return
 	}
 
 	db.Create(&newUser)
-	c.IndentedJSON(http.StatusCreated, newUser)
+	c.JSON(http.StatusCreated, newUser)
 }
 
 // updateUser обновляет информацию о пользователе
@@ -92,24 +122,25 @@ func updateUser(c *gin.Context) {
 	var user User
 
 	if err := db.First(&user, id).Error; err != nil {
-		c.IndentedJSON(http.StatusNotFound, gin.H{"message": "user not found"})
+		handleError(c, err, http.StatusNotFound)
 		return
 	}
 
-	if err := c.BindJSON(&user); err != nil {
+	if err := c.ShouldBindJSON(&user); err != nil {
+		handleError(c, err, http.StatusBadRequest)
 		return
 	}
 
 	db.Save(&user)
-	c.IndentedJSON(http.StatusOK, user)
+	c.JSON(http.StatusOK, user)
 }
 
 // deleteUser удаляет пользователя
 func deleteUser(c *gin.Context) {
 	id := c.Param("id")
 	if err := db.Delete(&User{}, id).Error; err != nil {
-		c.IndentedJSON(http.StatusNotFound, gin.H{"message": "user not found"})
+		handleError(c, err, http.StatusNotFound)
 		return
 	}
-	c.IndentedJSON(http.StatusOK, gin.H{"message": "user deleted"})
+	c.JSON(http.StatusOK, gin.H{"message": "user deleted"})
 }
