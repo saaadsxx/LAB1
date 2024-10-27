@@ -1,0 +1,118 @@
+/* Основной стиль для заголовка */
+h1 {
+    color: #ff4500; /* Яркий оранжевый цвет */
+    font-size: 36px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Стиль для формы добавления задачи */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f0f8ff; /* Светлый голубой фон */
+    padding: 20px;
+    border: 2px solid #add8e6; /* Голубая рамка */
+    border-radius: 10px;
+    max-width: 300px;
+    margin: 20px auto;
+}
+
+/* Стиль для текстового поля */
+input[type="text"] {
+    padding: 10px;
+    border: 2px solid #add8e6; /* Голубая рамка */
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+    margin-bottom: 10px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Стиль для кнопки "Добавить" */
+button[type="submit"] {
+    background-color: #32cd32; /* Яркий зеленый фон */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Эффект при наведении на кнопку "Добавить" */
+button[type="submit"]:hover {
+    background-color: #228b22; /* Более темный зеленый */
+}
+
+/* Стиль для таблицы задач */
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+th {
+    background-color: #4682b4; /* Синий фон */
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-size: 18px;
+}
+
+td {
+    padding: 10px;
+    text-align: center;
+    font-size: 16px;
+}
+
+/* Разные стили для строк задач */
+td:nth-child(1) {
+    background-color: #32cd32; /* Светло-желтый фон */
+}
+
+td:nth-child(2) {
+    background-color: #32cd32; /* Светло-голубой фон */
+}
+
+td:nth-child(3) {
+    background-color: #32cd32; /* Светло-зеленый фон */
+}
+
+/* Стиль для кнопки "Удалить" */
+button {
+    background-color: #ff4500; /* Яркий красный фон */
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.3s ease;
+}
+
+/* Эффект при наведении на кнопку "Удалить" */
+button:hover {
+    background-color: #ff4500; /* Темный красный */
+    transform: scale(1.1);
+}
+
+/* Стиль для чекбоксов */
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+/* Стиль при отметке задачи как выполненной */
+input[type="checkbox"]:checked {
+    background-color: #32cd32; /* Зеленый цвет */
+    transition: transform 0.2s;
+}
+
+/* Анимация при наведении на чекбокс */
+input[type="checkbox"]:hover {
+    transform: scale(1.2);
+}

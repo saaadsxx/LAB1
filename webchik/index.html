@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Список задач</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Подключение стилей -->
+</head>
+<body>
+    <h1>Список задач</h1>
+    <a href="add_task.html">Добавить задачу</a>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Задачи</th>
+                <th>В работе</th>
+                <th>Выполненные</th>
+            </tr>
+        </thead>
+        <tbody id="task-table">
+            <tr>
+                <td>
+                    <label>
+                        <input type="checkbox"> Задача 1
+                    </label>
+                    <button onclick="removeTask(this)">Удалить</button>
+                </td>
+                <td>
+                    <label>
+                        <input type="checkbox"> Задача 2
+                    </label>
+                    <button onclick="removeTask(this)">Удалить</button>
+                </td>
+                <td>
+                    <label>
+                        <input type="checkbox" checked> Задача 3
+                    </label>
+                    <button onclick="removeTask(this)">Удалить</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        function removeTask(button) {
+            const taskCell = button.parentElement;
+            taskCell.remove();
+        }
+
+        // Функция для добавления новой задачи из локального хранилища
+        function addNewTask() {
+            const newTask = localStorage.getItem("newTask");
+            if (newTask) {
+                const taskTable = document.getElementById("task-table");
+                const newRow = document.createElement("tr");
+                newRow.innerHTML = `
+                    <td>
+                        <label>
+                            <input type="checkbox"> ${newTask}
+                        </label>
+                        <button onclick="removeTask(this)">Удалить</button>
+                    </td>
+                    <td></td>
+                    <td></td>
+                `;
+                taskTable.appendChild(newRow);
+                localStorage.removeItem("newTask");
+            }
+        }
+
+        // Вызов функции добавления новой задачи при загрузке страницы
+        window.onload = addNewTask;
+    </script>
+</body>
+</html>
