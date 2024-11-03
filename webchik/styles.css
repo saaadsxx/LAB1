@@ -1,6 +1,6 @@
 /* Основной стиль для заголовка */
 h1 {
-    color: #ff4500; /* Яркий оранжевый цвет */
+    color: black; /* Яркий оранжевый цвет */
     font-size: 36px;
     text-align: center;
     margin-top: 20px;
@@ -71,15 +71,15 @@ td {
 
 /* Разные стили для строк задач */
 td:nth-child(1) {
-    background-color: #32cd32; /* Светло-желтый фон */
+    background-color: white; /* Светло-желтый фон */
 }
 
 td:nth-child(2) {
-    background-color: #32cd32; /* Светло-голубой фон */
+    background-color: white; /* Светло-голубой фон */
 }
 
 td:nth-child(3) {
-    background-color: #32cd32; /* Светло-зеленый фон */
+    background-color: white; /* Светло-зеленый фон */
 }
 
 /* Стиль для кнопки "Удалить" */
@@ -115,4 +115,42 @@ input[type="checkbox"]:checked {
 /* Анимация при наведении на чекбокс */
 input[type="checkbox"]:hover {
     transform: scale(1.2);
+}
+
+/* Центрирование ссылки "Добавить задачу" */
+a[href="add_task.html"] {
+    display: block;
+    text-align: center;
+    margin: 20px auto;
+    font-size: 18px;
+    color: #4682b4; /* Синий цвет ссылки */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+/* Эффект при наведении на ссылку */
+a[href="add_task.html"]:hover {
+    color: #1e90ff; /* Более яркий синий при наведении */
+}
+
+/* Центрирование ссылки "Вернуться к списку задач" */
+a[href="index.html"] {
+    display: block;
+    text-align: center;
+    margin: 20px auto;
+    font-size: 18px;
+    color: #4682b4; /* Синий цвет ссылки */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+/* Эффект при наведении на ссылку */
+a[href="index.html"]:hover {
+    color: #1e90ff; /* Более яркий синий при наведении */
+}
+
+label input[type="checkbox"] {
+    position: relative;
+    top: 5px; /* Опустите чекбокс на 2 пикселя */
+    margin-right: 8px; /* Расстояние между чекбоксом и текстом */
 }
