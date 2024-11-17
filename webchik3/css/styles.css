@@ -1,0 +1,150 @@
+/* Общие стили */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #333;
+  padding: 10px;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+header ul li {
+  padding: 10px;
+}
+
+header ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+header ul li a:hover {
+  text-decoration: underline;
+}
+
+header ul li.active a {
+  font-weight: bold;
+  pointer-events: none;
+}
+
+/* Стили для бургер-меню */
+.burger-menu {
+  display: none;
+  cursor: pointer;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1100;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.burger-menu span {
+  width: 30px;
+  height: 4px;
+  background-color: white;
+  border-radius: 5px;
+}
+
+/* Сайдбар (скрытый по умолчанию) */
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -250px; /* Скрыть меню за пределами экрана */
+  width: 250px;
+  height: 100%;
+  background-color: #333;
+  z-index: 1000;
+  transition: right 0.3s ease;
+}
+
+.sidebar ul {
+  list-style: none;
+  margin: 0;
+  padding: 20px;
+}
+
+.sidebar ul li {
+  padding: 10px 0;
+}
+
+.sidebar ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.sidebar ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Показываем сайдбар при активации */
+.sidebar.active {
+  right: 0;
+}
+
+/* Обычные стили для контента */
+main {
+  margin-top: 60px;
+  padding: 20px;
+  transition: margin-left 0.3s ease;
+}
+
+footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+/* Для мобильных устройств */
+@media (max-width: 768px) {
+  header {
+    display: none; /* Прячем верхнее меню на мобильных устройствах */
+  }
+
+  .burger-menu {
+    display: flex;
+  }
+
+  main {
+    margin-left: 0;
+  }
+
+  .sidebar.active + main {
+    margin-left: 250px; /* Сдвиг контента, когда меню открыто */
+  }
+}
+
+/* Для десктопов */
+@media (min-width: 769px) {
+  .burger-menu {
+    display: block;
+  }
+
+  header {
+    display: block; /* Показываем обычное горизонтальное меню на десктопах */
+  }
+
+  .sidebar {
+    display: none; /* Скрываем сайдбар на десктопах */
+  }
+}

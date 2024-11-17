@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список задач</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="menu">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="404.html">Проекты</a></li>
+                <li class="active"><a href="#">Список задач</a></li>
+                <li><a href="about.html">О приложении</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Список задач</h1>
+        <button id="addTaskButton">Добавить задачу</button>
+
+        <div class="task-container">
+            <div class="task-column" id="toDo">
+                <h2>Задачи</h2>
+                <ul></ul>
+            </div>
+            <div class="task-column" id="inProgress">
+                <h2>В работе</h2>
+                <ul></ul>
+            </div>
+            <div class="task-column" id="completed">
+                <h2>Выполненные</h2>
+                <ul></ul>
+            </div>
+        </div>
+
+        <!-- Модальное окно -->
+        <dialog id="taskDialog">
+            <form method="dialog">
+                <label for="taskInput">Введите задачу:</label>
+                <input type="text" id="taskInput" required>
+                <menu>
+                    <button value="cancel">Отмена</button>
+                    <button id="confirmAddTask" value="default">Добавить</button>
+                </menu>
+            </form>
+        </dialog>
+    </main>
+    <script src="scripts.js"></script>
+</body>
+</html>
