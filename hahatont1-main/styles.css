@@ -1,0 +1,146 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+  }
+  
+  #toolbar {
+    display: flex;
+    gap: 10px;
+    background-color: #343a40;
+    padding: 10px;
+    color: #fff;
+    justify-content: center;
+  }
+  
+  #toolbar button {
+    padding: 10px;
+    background-color: #6c757d;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #fff;
+  }
+  
+  #toolbar button:hover {
+    background-color: #495057;
+  }
+  
+  #report-container {
+    margin: 20px auto;
+    width: 80%;
+    max-width: 800px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .report-element {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    position: relative;
+  }
+  
+  .remove-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: #e74c3c;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+  }
+  
+  th,
+  td {
+    padding: 8px;
+    border: 1px solid #ced4da;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #e9ecef;
+  }
+  
+  /* Styles for the modal window */
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .modal-content input {
+    width: 80px;
+    margin: 10px;
+    padding: 5px;
+    text-align: center;
+  }
+
+  #chartModal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #chartModal .modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+  }
+  
+  #chartModal input {
+    width: 100%;
+    margin: 10px 0;
+    padding: 8px;
+  }
+
+  
+  .report-element button {
+    margin-top: 10px;
+    padding: 8px 12px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .report-element button:hover {
+    background-color: #218838;
+  }
+  

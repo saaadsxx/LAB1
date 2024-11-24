@@ -341,12 +341,8 @@ func main() {
 	log.Fatal(http.ListenAndServe(":8000", router))
 }
 
-// curl -X POST http://localhost:8000/login -H "Content-Type: application/json" -d '{"username": "admin", "password": "adminpassword"}' Авторизация
-
-// curl -X GET http://localhost:8000/users -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzI5NDM5MzAwLCJpYXQiOjE3Mjk0Mzc1MDB9.ELm7Am1Bsawca1jcPDYWZ3EYmu4fvj9qjwTYjPKRfmA" -H "Content-Type: application/json" Получение списка пользователей
-
-// curl -X POST http://localhost:8000/users -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzI5NDM5MzAwLCJpYXQiOjE3Mjk0Mzc1MDB9.ELm7Am1Bsawca1jcPDYWZ3EYmu4fvj9qjwTYjPKRfmA" -H "Content-Type: application/json" -d '{"name": "John Doe", "email": "johndoe@example.com", "age": 30}' Создание пользователя
-
-// curl -X PUT http://localhost:8000/users/1 -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzI5NDM5MzAwLCJpYXQiOjE3Mjk0Mzc1MDB9.ELm7Am1Bsawca1jcPDYWZ3EYmu4fvj9qjwTYjPKRfmA" -H "Content-Type: application/json" -d '{"name": "John Doe", "email": "john.doe@example.com", "age": 31}' Обновление пользователя
-
-// curl -X DELETE http://localhost:8000/users/1 -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzI5NDM5MzAwLCJpYXQiOjE3Mjk0Mzc1MDB9.ELm7Am1Bsawca1jcPDYWZ3EYmu4fvj9qjwTYjPKRfmA" -H "Content-Type: application/json" Удаление пользователя
+// curl -X POST http://localhost:8000/login -H "Content-Type: application/json" -d '{"username": "postgres", "password": "1"}'    Авторизация
+// curl -X GET http://localhost:8000/users -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBvc3RncmVzIiwicm9sZSI6InBvc3RncmVzIiwiZXhwIjoxNzMxODcxODExLCJpYXQiOjE3MzE4NzAwMTF9.eiGfCxo3Lb_jy-VMgWuksE8cReDYaI1pVQBt_ARNCdg" -H "Content-Type: application/json"    Получение списка пользователей
+// curl -X POST http://localhost:8000/users -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBvc3RncmVzIiwicm9sZSI6InBvc3RncmVzIiwiZXhwIjoxNzMxODcxODExLCJpYXQiOjE3MzE4NzAwMTF9.eiGfCxo3Lb_jy-VMgWuksE8cReDYaI1pVQBt_ARNCdg" -H "Content-Type: application/json" -d '{"name": "John Doe", "email": "johndoe@example.com", "age": 30}' Создание пользователя
+// curl -X PUT http://localhost:8000/users/1 -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBvc3RncmVzIiwicm9sZSI6InBvc3RncmVzIiwiZXhwIjoxNzMxODcxODExLCJpYXQiOjE3MzE4NzAwMTF9.eiGfCxo3Lb_jy-VMgWuksE8cReDYaI1pVQBt_ARNCdg" -H "Content-Type: application/json" -d '{"name": "John Doe", "email": "john.doe@example.com", "age": 31}' Обновление пользователя
+// curl -X DELETE http://localhost:8000/users/1 -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBvc3RncmVzIiwicm9sZSI6InBvc3RncmVzIiwiZXhwIjoxNzMxODcxODExLCJpYXQiOjE3MzE4NzAwMTF9.eiGfCxo3Lb_jy-VMgWuksE8cReDYaI1pVQBt_ARNCdg" -H "Content-Type: application/json" Удаление пользователя

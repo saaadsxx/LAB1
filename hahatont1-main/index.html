@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Report Builder Toolbar with Table Size Selection</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Toolbar -->
+    <div id="toolbar">
+      <button onclick="addTitle()">Add Title</button>
+      <button onclick="addParagraph()">Add Paragraph</button>
+      <button onclick="showTableModal()">Add Table</button>
+      <button onclick="showChartModal('bar')">Add Bar Chart</button>
+      <button onclick="showChartModal('pie')">Add Pie Chart</button>
+      <button onclick="showChartModal('histogram')">Add Histogram</button>
+
+      <input
+        type="file"
+        accept=".csv"
+        id="csvInput"
+        style="display: none"
+        multiple
+        onchange="loadCSV(event)"
+      />
+      <button onclick="document.getElementById('csvInput').click()">
+        Import CSV
+      </button>
+      <input
+        type="file"
+        accept=".json"
+        id="jsonInput"
+        style="display: none"
+        onchange="loadJSON(event)"
+      />
+      <button onclick="document.getElementById('jsonInput').click()">
+        Import JSON
+      </button>
+      <button onclick="clearReport()">Clear Report</button>
+      <button onclick="exportToPPTX()">Export to PPTX</button>
+      <button onclick="exportToPDF()">Export to PDF</button>
+    </div>
+
+    <!-- Report Container -->
+    <div id="report-container"></div>
+
+    <!-- Modal for table size selection -->
+    <div id="tableModal" class="modal">
+      <div class="modal-content">
+        <h3>Select Table Size</h3>
+        <label
+          >Rows: <input type="number" id="tableRows" min="1" value="2"
+        /></label>
+        <label
+          >Columns: <input type="number" id="tableColumns" min="1" value="2"
+        /></label>
+        <button onclick="createTable()">Create Table</button>
+        <button onclick="closeTableModal()">Cancel</button>
+      </div>
+    </div>
+
+        <!-- Modal for chart input -->
+    <div id="chartModal" class="modal">
+      <div class="modal-content">
+        <h3>Enter Chart Data</h3>
+        <label for="chartLabels">Labels (comma-separated):</label>
+        <input type="text" id="chartLabels" placeholder="Label 1, Label 2, ..." />
+        <label for="chartData">Values (comma-separated):</label>
+        <input type="text" id="chartData" placeholder="10, 20, 30, ..." />
+        <button onclick="createChart()">Create Chart</button>
+        <button onclick="closeChartModal()">Cancel</button>
+      </div>
+    </div>
+
+
+    <script src="script.js"></script>
+    <script src="libs/pptxgen.bundle.js"></script>
+  </body>
+</html>
